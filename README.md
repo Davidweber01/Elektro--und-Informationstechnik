@@ -1,1 +1,1 @@
-# Elektro--und-Informationstechnik
+# Elektro-undInformationstechnik
