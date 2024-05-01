@@ -1,6 +1,21 @@
 import random
+from typing import List
 
-def displayListe2D(liste):
+def displayListe2D(liste: List[List[int]]):
+    """
+    Display a 2D list as a grid of characters based on a dictionary mapping values to characters.
+
+    Parameters:
+    - liste (List[List[int]]): The 2D list to be displayed.
+
+    The function prints each value in the 2D list as a character according to the mapping defined in the dictionary. If a value is not found in the dictionary, it is replaced with '?'.
+
+    Example:
+    >>> displayListe2D([[0, 1, 2, 3], [3, 2, 1, 0]])
+    .:.!
+    !:?!.
+    """
+
     dictionary = {0: ' ',1: '.', 2: ':', 3: '!'}
     for row in liste:
         for value in row:

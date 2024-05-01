@@ -6,6 +6,23 @@ from aufgabe3d import display
 import time
 
 def nextGeneration(universe: List[List[int]], neighbour: List[List[int]]) -> List[List[int]]:
+    """
+    Calculate the next generation of cells in Conway's Game of Life.
+
+    Parameters:
+    - universe (List[List[int]]): The current state of the universe (2D matrix of cells).
+    - neighbour (List[List[int]]): The number of live neighbors for each cell in the universe.
+
+    Returns:
+    - List[List[int]]: The next generation of cells based on the rules of Conway's Game of Life.
+
+    The function iterates over each cell in the universe and determines its state in the next generation based on the number of live neighbors calculated using the neighbour matrix. It applies the rules of Conway's Game of Life to determine whether each cell lives, dies, or becomes alive in the next generation.
+
+    Example:
+    >>> nextGeneration([[0, 1, 0], [1, 1, 0], [0, 0, 1]], [[2, 3, 2], [3, 4, 3], [3, 3, 3]])
+    [[0, 1, 0], [1, 0, 1], [1, 1, 1]]
+    """
+
     num_rows = len(universe)
     num_cols = len(universe[0]) if universe else 0
 
@@ -25,15 +42,11 @@ def nextGeneration(universe: List[List[int]], neighbour: List[List[int]]) -> Lis
 
     return new_universe
 
-
 matrix = create(10, 10)
-
-display(matrix)
 
 while True:
     display(matrix)
     neighbour_matrix = getNeighbours(matrix)
-
     matrix = nextGeneration(matrix, neighbour_matrix)
-    
+
     time.sleep(1)
