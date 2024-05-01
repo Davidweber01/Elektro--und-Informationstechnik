@@ -8,3 +8,4 @@ def display(matrix: List[List[int]]):
             elif value > 0:
                 print('*', end='')
         print('')
+    print('')

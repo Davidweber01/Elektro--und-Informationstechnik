@@ -10,7 +10,6 @@ print('')
 
 display(matrix)
 
-print('')
 
 neighbour_matrix = getNeighbours(matrix)
 
