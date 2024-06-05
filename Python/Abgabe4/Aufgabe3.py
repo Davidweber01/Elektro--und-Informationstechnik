@@ -5,7 +5,7 @@ if __name__ == "__main__":
     universum = Universum(50, 50)
 
     while True:
+        print("Nächster Schritt:\n")
         universum.darstellung()
         universum.berechne_folgezustand()
-        print("Nächster Schritt:\n")
         sleep(1)
