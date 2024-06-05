@@ -22,8 +22,10 @@ class Universum:
                 self.grid[i][j].change_nachbarn(nachbarn)
 
     def darstellung(self):
-        for reihe in self.grid:
-            print(' '.join(str(stern) for stern in reihe))
+        for x, reihe in enumerate(self.grid):
+            for y, stern in enumerate(reihe):
+                stern.update(x, y)
+            
 
     def berechne_folgezustand(self):
         for reihe in self.grid:

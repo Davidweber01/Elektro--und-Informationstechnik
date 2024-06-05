@@ -38,17 +38,23 @@ class Stern:
             else:
                 return False # Stays dead
 
-    def update(self):
+    def update(self, x, y):
         if self.helligkeit == 1:
             glColor3f(1.0, 1.0, 1.0)  # White color for live cells
+            glBegin(GL_QUADS)
+            glVertex2f(x, y)
+            glVertex2f(x + 1, y)
+            glVertex2f(x + 1, y + 1)
+            glVertex2f(x, y + 1)
+            glEnd()
         else:
-            glColor3f(0.0, 0.0, 0.0)  # Black color for dead cells
-        glBegin(GL_QUADS)
-        glVertex2f(self.x, self.y)
-        glVertex2f(self.x + 1, self.y)
-        glVertex2f(self.x + 1, self.y + 1)
-        glVertex2f(self.x, self.y + 1)
-        glEnd()
+            glColor3f(1.0, 1.0, 1.0)  # White color for the outline
+            glBegin(GL_LINE_LOOP)
+            glVertex2f(x, y)
+            glVertex2f(x + 1, y)
+            glVertex2f(x + 1, y + 1)
+            glVertex2f(x, y + 1)
+            glEnd()
 
             
 
