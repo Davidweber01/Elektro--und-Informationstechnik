@@ -3,28 +3,23 @@ from pygame.locals import * # to use constants from pygame directly
 from OpenGL.GL import * # to use features from OpenGL
 from MainWindow import MainWindow
 from Objects2d import *
+from math import ceil
 
 if __name__ == "__main__":
     game = MainWindow(windowHeight= 1080, windowWidth=1920, name="Window")
     # Calculate aspect ratio
     aspect_ratio = game.windowWidth / game.windowHeight
     
-    # Choose ranges based on the larger dimension
-    if aspect_ratio >= 1:  # Width is larger
-        xRange = (-10 * aspect_ratio, 10 * aspect_ratio)
-        yRange = (-10, 10)
-    else:  # Height is larger
-        xRange = (-10, 10)
-        yRange = (-10 / aspect_ratio, 10 / aspect_ratio)
+    # Set orthogonal projection ranges to match window dimensions
+    xRange = (0, game.windowWidth // 10)
+    yRange = (0, game.windowHeight // 10)
     
     game.OrthogonalProjection(xRange=xRange, yRange=yRange, zRange=(0, 1), frame=0)
     
     # Create a grid of squares to fill the screen
     objects = []
-    x_min, x_max = xRange
-    y_min, y_max = yRange
-    for x in range(int(x_min), int(x_max)):
-        for y in range(int(y_min), int(y_max)):
-            objects.append(Square(x, y, size=1))
-
+    for x in range(0, int(game.windowWidth/10)):
+        for y in range(0, int(game.windowHeight/10)):
+            objects.append(Square(x, y, size=10))
+    
     game.mainloop(objectlist=objects)
