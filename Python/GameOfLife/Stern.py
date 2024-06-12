@@ -56,6 +56,12 @@ class Stern:
             glVertex2f(x, y + 1)
             glEnd()
 
+    def switch_alive(self):
+        if self.helligkeit == 1:
+            self.helligkeit = 0
+        else:
+            self.helligkeit = 1
+
             
 
 if __name__ == "__main__":

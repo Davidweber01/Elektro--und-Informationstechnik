@@ -23,14 +23,26 @@ if __name__ == "__main__":
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
 
+    pause = False
     universum = Universum(WIDTH // SCALE, HEIGHT // SCALE)
 
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                 pygame.quit()
+            elif event.type == pygame.MOUSEBUTTONUP:
+                pos = pygame.mouse.get_pos()
+                x = pos[0] // SCALE
+                y = - pos[1] // SCALE
+                universum.grid[x][y].switch_alive()
+            elif event.type == KEYDOWN and event.key == K_SPACE:
+                if pause == True:
+                    pause = False
+                else:
+                    pause = True
             elif event.type == timer_event:
-                universum.berechne_folgezustand()
+                if pause == False:
+                    universum.berechne_folgezustand()
         glClear(GL_COLOR_BUFFER_BIT)
         universum.darstellung()
         pygame.display.flip()
